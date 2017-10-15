@@ -1,0 +1,16 @@
+  //The binary-to-decimal converter
+  
+  function binDec (bin) {
+    var convArr = [];
+    for (i=0; i < bin.length; i++) {
+      if (bin[i] == 1) {
+        convArr.push(Math.pow(2,bin.length-(i+1)));
+      } else if (bin[i] == 0) {
+        convArr.push(0);
+      }
+    }
+    var result = convArr.reduce(function add(a,b){
+      return a+=b;
+    });
+    return result;
+  }
