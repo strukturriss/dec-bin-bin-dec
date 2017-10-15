@@ -2,15 +2,19 @@
 function decBin (dec) {
   var targetArr = [];
   
-  for (i=0; i <= Math.floor(Math.sqrt(dec)); i++) {
-    if (dec-Math.pow(2,i) == 0) {
-      targetArr.unshift(1);
-      dec = dec-Math.pow(2,i);
-    } else {
-      targetArr.unshift(0);
+  function recurse (x) {
+    for (i=Math.sqrt(x); i > 0; i--) {
+      if (x-Math.pow(2,i) == 0) {
+        targetArr.push(x);
+      } else {
+        targetArr.push(Math.pow(2,i-1));
+        x = x-Math.pow(2,i-1);
+        recurse(x);
+      }
     }
   }
   
+  recurse(dec);
   return targetArr;
 }
 
