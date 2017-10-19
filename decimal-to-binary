@@ -1,22 +1,25 @@
 
 function decBin (dec) {
   var targetArr = [];
-  var temp;
+  var tempArr = [];
   
-  function recurse (x) {
-    for (i=x; i > 0; i--) {
-      if (x-(Math.pow(2,i)) >= 0) {
-        targetArr.push(Math.pow(2,i));
-        temp = x-(Math.pow(2,i));
-      } else {
-        temp = x;
-        recurse(temp);
-      }
+  for (i=0; i <= Math.log2(dec); i++) {
+    tempArr.push(Math.pow(2,i));
+  }
+  
+  function recursive(x,j) {
+    targetArr.push(tempArr[tempArr.length-j]);
+    var interim = x-tempArr[tempArr.length-j];
+    if (interim > 0) {
+      j++;
+      recursive(interim,j);
+    } else {
+      targetArr.push(0);
     }
   }
   
-  recurse(dec);
+  recursive(dec,1);
   return targetArr;
 }
 
-decBin (128);
+decBin (117);
