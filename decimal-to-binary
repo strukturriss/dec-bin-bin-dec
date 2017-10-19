@@ -19,7 +19,16 @@ function decBin (dec) {
   }
   
   recursive(dec,1);
-  return targetArr;
+  
+  targetArr = targetArr.map(function kitten(zeroOne) {
+    if (zeroOne > 0) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  
+  return targetArr.join("");
 }
 
-decBin (117);
+decBin (128);
