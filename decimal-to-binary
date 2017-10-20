@@ -10,17 +10,19 @@ function decBin (dec) {
   function recursive(x,j) {
     targetArr.push(tempArr[tempArr.length-j]);
     var interim = x-tempArr[tempArr.length-j];
-    if (interim > 0) {
+    if (interim > 0 && (interim-tempArr[tempArr.length-(j+1)] > 0)) {
       j++;
       recursive(interim,j);
-    } else {
+    } else if (interim > 0 && (interim-tempArr[tempArr.length-(j+1)] <= 0)) {
       targetArr.push(0);
+      j+=2;
+      recursive(interim,j);
     }
   }
   
   recursive(dec,1);
   
-  targetArr = targetArr.map(function kitten(zeroOne) {
+  targetArr = targetArr.map(function binarying(zeroOne) {
     if (zeroOne > 0) {
       return 1;
     } else {
