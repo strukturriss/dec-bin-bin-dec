@@ -22,15 +22,15 @@ function decBin (dec) {
   
   recursive(dec,1);
   
-  targetArr = targetArr.map(function binarying(zeroOne) {
+/*targetArr = targetArr.map(function binarying(zeroOne) {
     if (zeroOne > 0) {
       return 1;
     } else {
       return 0;
     }
-  });
+  });*/
   
-  return targetArr.join("");
+  return targetArr; //.join("");
 }
 
 decBin (128);
